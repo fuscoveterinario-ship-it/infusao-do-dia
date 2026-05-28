@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Infusão do Dia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="phone-frame" aria-label="Protótipo do app Infusão do Dia">
+        <header class="topbar">
+          <div class="brand">
+            <img src="assets/logo-infusao-do-dia.svg" alt="Infusão do Dia">
+            <div>
+              <span class="eyebrow">Bem-estar em uma xícara</span>
+              <h1>Infusão do Dia</h1>
+            </div>
+          </div>
+          <button class="icon-button" type="button" aria-label="Abrir perfil">
+            <span>MF</span>
+          </button>
+        </header>
+
+        <section class="balance-card">
+          <div>
+            <span class="label">Suas Infusões</span>
+            <strong><span id="infusionBalance">12</span> disponíveis</strong>
+            <small id="dataStatus">Base: carregando ervas...</small>
+          </div>
+          <span class="season-pill">Outono</span>
+        </section>
+
+        <div class="tab-view active" data-view="today">
+        <section class="checkin">
+          <p class="section-kicker">Como você está hoje?</p>
+          <h2>Conte seu momento e receba uma sugestão leve para agora.</h2>
+
+          <div class="mood-grid" aria-label="Sugestões rápidas de sentimento">
+            <button type="button" data-mood="cansada">Cansada</button>
+            <button type="button" data-mood="ansiosa">Ansiosa</button>
+            <button type="button" data-mood="sem foco">Sem foco</button>
+            <button type="button" data-mood="querendo relaxar">Relaxar</button>
+            <button type="button" data-mood="com desconforto no ciclo">Ciclo</button>
+          </div>
+
+          <label class="input-label" for="feelingInput">Escreva do seu jeito</label>
+          <textarea id="feelingInput" rows="4" placeholder="Ex: estou cansada, com a mente cheia e quero desacelerar um pouco."></textarea>
+
+          <div class="safety-options" aria-label="Cuidados pessoais">
+            <label><input type="checkbox" id="pregnantCheck"> Gestante</label>
+            <label><input type="checkbox" id="medicineCheck"> Uso remédio contínuo</label>
+          </div>
+
+          <button class="primary-button" id="generateButton" type="button">
+            Usar 1 Infusão
+          </button>
+        </section>
+
+        <section class="result-panel" id="resultPanel" aria-live="polite">
+          <div class="result-header">
+            <span class="result-icon" aria-hidden="true">
+              <span class="cup-mark"></span>
+            </span>
+            <div>
+              <p class="section-kicker">Sua Infusão do Dia</p>
+              <h2 id="teaName">Camomila com capim-cidreira</h2>
+            </div>
+          </div>
+
+          <div class="insight">
+            <span>Para o seu momento</span>
+            <p id="teaReason">Uma combinação leve para quando a mente pede pausa e o corpo precisa desacelerar.</p>
+          </div>
+
+          <div class="recipe">
+            <div>
+              <span>Preparo</span>
+              <strong id="teaRecipe">5 a 8 min em 200 ml de água quente</strong>
+            </div>
+            <div>
+              <span>Ingrediente base</span>
+              <strong id="teaHerb">Camomila</strong>
+            </div>
+          </div>
+
+          <blockquote id="dailyMessage">
+            "Você não precisa resolver tudo agora. Comece respirando, depois siga no seu tempo."
+          </blockquote>
+
+          <p class="care-note" id="careNote">
+            Conteúdo de bem-estar. Não substitui orientação médica.
+          </p>
+        </section>
+
+        <section class="nearby">
+          <div class="section-title-row">
+            <div>
+              <p class="section-kicker">Perto de você</p>
+              <h2>Lojas naturais</h2>
+            </div>
+            <button type="button" class="text-button">Ver mapa</button>
+          </div>
+
+          <article class="store-row">
+            <div>
+              <strong>Empório Verde Vida</strong>
+              <span>Camomila, hortelã e hibisco</span>
+            </div>
+            <small>1,2 km</small>
+          </article>
+          <article class="store-row">
+            <div>
+              <strong>Casa Natural</strong>
+              <span>Ervas a granel e infusores</span>
+            </div>
+            <small>2,4 km</small>
+          </article>
+        </section>
+        </div>
+
+        <div class="tab-view" data-view="ritual">
+          <section class="screen-section">
+            <p class="section-kicker">Ritual da semana</p>
+            <h2>Uma rotina leve para criar hábito.</h2>
+
+            <div class="ritual-list">
+              <article>
+                <span>Manhã</span>
+                <strong>Hortelã com limão</strong>
+                <p>Para começar com frescor e presença.</p>
+              </article>
+              <article>
+                <span>Tarde</span>
+                <strong>Alecrim suave</strong>
+                <p>Para acompanhar foco sem pressa.</p>
+              </article>
+              <article>
+                <span>Noite</span>
+                <strong>Camomila com melissa</strong>
+                <p>Para preparar uma pausa antes do descanso.</p>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <div class="tab-view" data-view="stores">
+          <section class="screen-section">
+            <div class="section-title-row">
+              <div>
+                <p class="section-kicker">Comprar ingredientes</p>
+                <h2>Lojas próximas</h2>
+              </div>
+              <span class="season-pill">2 grátis</span>
+            </div>
+
+            <div class="map-preview" aria-label="Prévia do mapa de lojas próximas">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <article class="store-card">
+              <strong>Empório Verde Vida</strong>
+              <p>Camomila, capim-cidreira, hibisco e ervas a granel.</p>
+              <div><span>1,2 km</span><button type="button">Abrir rota</button></div>
+            </article>
+            <article class="store-card">
+              <strong>Casa Natural</strong>
+              <p>Infusores, blends prontos e ingredientes orgânicos.</p>
+              <div><span>2,4 km</span><button type="button">Ligar</button></div>
+            </article>
+          </section>
+        </div>
+
+        <div class="tab-view" data-view="profile">
+          <section class="screen-section">
+            <p class="section-kicker">Seu plano</p>
+            <h2>Infusões para usar no seu ritmo.</h2>
+
+            <div class="plan-card highlighted">
+              <span>Mais escolhido</span>
+              <strong>Plano Sereno</strong>
+              <p>40 Infusões por mês, histórico e lojas próximas completas.</p>
+              <button type="button">R$ 7,90/mês</button>
+            </div>
+
+            <div class="packs">
+              <button type="button">10 Infusões<br><strong>R$ 4,90</strong></button>
+              <button type="button">30 Infusões<br><strong>R$ 9,90</strong></button>
+            </div>
+          </section>
+        </div>
+
+        <nav class="bottom-nav" aria-label="Navegação principal">
+          <button class="active" type="button" data-tab="today">Hoje</button>
+          <button type="button" data-tab="ritual">Ritual</button>
+          <button type="button" data-tab="stores">Lojas</button>
+          <button type="button" data-tab="profile">Perfil</button>
+        </nav>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
