@@ -717,7 +717,7 @@ blockquote {
               <p class="section-kicker">Perto de você</p>
               <h2>Lojas naturais</h2>
             </div>
-            <button type="button" class="text-button">Ver mapa</button>
+              <button type="button" class="text-button" data-map-search="lojas de produtos naturais perto de mim">Ver mapa</button>
           </div>
 
           <article class="store-row">
@@ -781,12 +781,12 @@ blockquote {
             <article class="store-card">
               <strong>Empório Verde Vida</strong>
               <p>Camomila, capim-cidreira, hibisco e ervas a granel.</p>
-              <div><span>1,2 km</span><button type="button">Abrir rota</button></div>
+              <div><span>1,2 km</span><button type="button" data-map-search="lojas de produtos naturais perto de mim">Abrir rota</button></div>
             </article>
             <article class="store-card">
               <strong>Casa Natural</strong>
               <p>Infusores, blends prontos e ingredientes orgânicos.</p>
-              <div><span>2,4 km</span><button type="button">Ligar</button></div>
+              <div><span>2,4 km</span><button type="button" data-map-search="ervas para chá perto de mim">Ver lojas</button></div>
             </article>
           </section>
         </div>
@@ -1778,6 +1778,7 @@ const moodButtons = document.querySelectorAll("[data-mood]");
 const tabButtons = document.querySelectorAll("[data-tab]");
 const tabViews = document.querySelectorAll("[data-view]");
 const checkoutButtons = document.querySelectorAll("[data-checkout-url]");
+const mapButtons = document.querySelectorAll("[data-map-search]");
 
 const fallbackTeaData = {
   herbs: [
@@ -2011,6 +2012,14 @@ checkoutButtons.forEach((button) => {
     }
 
     window.location.href = button.dataset.checkoutUrl;
+  });
+});
+
+mapButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const query = button.dataset.mapSearch || "lojas de produtos naturais perto de mim";
+    const mapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(query)}`;
+    window.open(mapsUrl, "_blank", "noopener,noreferrer");
   });
 });
 
