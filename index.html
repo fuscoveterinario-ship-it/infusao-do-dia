@@ -799,13 +799,13 @@ blockquote {
             <div class="plan-card highlighted">
               <span>Mais escolhido</span>
               <strong>Plano Sereno</strong>
-              <p>40 Infusões por mês, histórico e lojas próximas completas.</p>
-              <button type="button">R$ 7,90/mês</button>
+              <p>Infusões mensais, histórico e lojas próximas completas.</p>
+              <button type="button" data-checkout-plan="Plano Sereno" data-checkout-url="https://kiwify.app/AbGNeiR">R$ 17,90/mês</button>
             </div>
 
             <div class="packs">
-              <button type="button">10 Infusões<br><strong>R$ 4,90</strong></button>
-              <button type="button">30 Infusões<br><strong>R$ 9,90</strong></button>
+              <button type="button" data-checkout-plan="10 Infusões" data-checkout-url="https://pay.kiwify.com.br/i1sp75z">10 Infusões<br><strong>R$ 14,90</strong></button>
+              <button type="button" data-checkout-plan="30 Infusões" data-checkout-url="https://pay.kiwify.com.br/gqRDblh">30 Infusões<br><strong>R$ 19,90</strong></button>
             </div>
           </section>
         </div>
@@ -1777,6 +1777,7 @@ const dataStatus = document.querySelector("#dataStatus");
 const moodButtons = document.querySelectorAll("[data-mood]");
 const tabButtons = document.querySelectorAll("[data-tab]");
 const tabViews = document.querySelectorAll("[data-view]");
+const checkoutButtons = document.querySelectorAll("[data-checkout-url]");
 
 const fallbackTeaData = {
   herbs: [
@@ -1996,6 +1997,21 @@ moodButtons.forEach((button) => {
 
 tabButtons.forEach((button) => {
   button.addEventListener("click", () => switchTab(button.dataset.tab));
+});
+
+checkoutButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const plan = button.dataset.checkoutPlan || "Infusao do Dia";
+
+    if (typeof window.fbq === "function") {
+      window.fbq("track", "InitiateCheckout", {
+        content_name: plan,
+        currency: "BRL"
+      });
+    }
+
+    window.location.href = button.dataset.checkoutUrl;
+  });
 });
 
 generateButton.addEventListener("click", generateInfusion);
